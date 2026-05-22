@@ -60,10 +60,6 @@ export function CalendarView({ tasks }: CalendarViewProps) {
     return () => window.removeEventListener('resize', check)
   }, [])
 
-  useEffect(() => {
-    if (isMobile) calRef.current?.getApi().changeView('timeGridDay')
-    else calRef.current?.getApi().changeView('timeGridWeek')
-  }, [isMobile])
 
   const taskDates = useMemo(
     () => new Set(tasks.map((t) => t.date)),
@@ -128,10 +124,10 @@ export function CalendarView({ tasks }: CalendarViewProps) {
 
   return (
     <>
-      <div className="flex gap-4 md:h-[calc(100vh-120px)]">
+      <div className="flex flex-col md:flex-row gap-4 md:h-[calc(100vh-120px)]">
 
-        {/* Left sidebar — hidden on mobile */}
-        <div className="hidden md:flex w-52 shrink-0 flex-col gap-5">
+        {/* Left sidebar — full width on mobile, fixed width on desktop */}
+        <div className="flex flex-row flex-wrap gap-4 md:w-52 md:shrink-0 md:flex-col md:gap-5">
           <MiniCalendar
             selectedDate={selectedDate}
             onSelectDate={handleMiniCalendarSelect}
@@ -149,8 +145,8 @@ export function CalendarView({ tasks }: CalendarViewProps) {
             ))}
           </div>
 
-          {/* Tasks on selected day */}
-          <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
+          {/* Tasks on selected day — desktop only */}
+          <div className="hidden md:flex flex-1 min-h-0 overflow-hidden flex-col">
             <p className="text-xs text-muted-foreground font-medium mb-2">
               {selectedDate.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })}
             </p>
@@ -195,9 +191,9 @@ export function CalendarView({ tasks }: CalendarViewProps) {
             initialView="timeGridWeek"
             initialDate={selectedDate}
             headerToolbar={isMobile ? {
-              left: 'prev,next',
+              left: 'prev,next today',
               center: 'title',
-              right: 'today',
+              right: 'timeGridWeek,timeGridDay',
             } : {
               left: 'prev,next today',
               center: 'title',
@@ -205,15 +201,15 @@ export function CalendarView({ tasks }: CalendarViewProps) {
             }}
             locale="th"
             firstDay={1}
-            height={isMobile ? 'auto' : '100%'}
+            height="auto"
             events={events}
-            editable
+            editable={!isMobile}
             selectable
             selectMirror
             dayMaxEvents
             nowIndicator
-            slotMinTime={isMobile ? '06:00:00' : '00:00:00'}
-            slotMaxTime={isMobile ? '23:00:00' : '24:00:00'}
+            slotMinTime="06:00:00"
+            slotMaxTime="23:00:00"
             eventClick={handleEventClick}
             eventDrop={handleEventDrop}
             select={handleDateSelect}
