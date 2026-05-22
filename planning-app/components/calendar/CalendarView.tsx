@@ -128,7 +128,7 @@ export function CalendarView({ tasks }: CalendarViewProps) {
 
   return (
     <>
-      <div className="flex gap-4 h-[calc(100vh-120px)] md:h-[calc(100vh-120px)]">
+      <div className="flex gap-4 md:h-[calc(100vh-120px)]">
 
         {/* Left sidebar — hidden on mobile */}
         <div className="hidden md:flex w-52 shrink-0 flex-col gap-5">
@@ -205,15 +205,15 @@ export function CalendarView({ tasks }: CalendarViewProps) {
             }}
             locale="th"
             firstDay={1}
-            height="100%"
+            height={isMobile ? 'auto' : '100%'}
             events={events}
             editable
             selectable
             selectMirror
             dayMaxEvents
             nowIndicator
-            slotMinTime="00:00:00"
-            slotMaxTime="24:00:00"
+            slotMinTime={isMobile ? '06:00:00' : '00:00:00'}
+            slotMaxTime={isMobile ? '23:00:00' : '24:00:00'}
             eventClick={handleEventClick}
             eventDrop={handleEventDrop}
             select={handleDateSelect}
