@@ -92,7 +92,7 @@ export function KanbanBoard({ initialItems, onCreate, onUpdateStatus, onDelete }
   return (
     <DndContext sensors={sensors} collisionDetection={closestCorners}
       onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd}>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="flex gap-3 overflow-x-auto pb-1 md:grid md:grid-cols-3 md:overflow-visible">
         {COLUMNS.map((col) => (
           <KanbanColumn
             key={col.id}
@@ -131,7 +131,7 @@ function KanbanColumn({
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-xl p-3 min-h-[200px] bg-muted/50">
+    <div className="flex flex-col gap-2 rounded-xl p-3 min-h-[200px] bg-muted/50 w-52 shrink-0 md:w-auto md:shrink">
       <div className="flex items-center justify-between mb-1">
         <div className="flex items-center gap-2">
           <span className={cn('text-[11px] font-semibold px-2 py-0.5 rounded-full border', column.dot)}>
