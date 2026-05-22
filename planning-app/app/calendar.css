@@ -1,0 +1,190 @@
+/* FullCalendar — refined Notion-style */
+.fc {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+/* Grid */
+.fc .fc-scrollgrid {
+  border: none !important;
+}
+.fc .fc-scrollgrid td,
+.fc .fc-scrollgrid th {
+  border-color: hsl(var(--border) / 0.6) !important;
+}
+
+/* ────── Toolbar ────── */
+.fc .fc-toolbar {
+  padding: 0 0 16px 0;
+  gap: 10px;
+}
+.fc .fc-toolbar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  letter-spacing: -0.01em;
+}
+
+/* nav + today buttons */
+.fc .fc-button {
+  background: transparent !important;
+  border: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  border-radius: 7px !important;
+  padding: 5px 13px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.fc .fc-button:hover {
+  background: hsl(var(--accent)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+/* view switcher — active pill */
+.fc .fc-button-active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background: hsl(var(--foreground)) !important;
+  color: hsl(var(--background)) !important;
+  border-color: hsl(var(--foreground)) !important;
+  font-weight: 600 !important;
+}
+
+.fc .fc-today-button {
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--foreground) / 0.35) !important;
+  font-weight: 600 !important;
+}
+
+/* ────── Column headers ────── */
+.fc .fc-col-header-cell {
+  padding: 10px 0 !important;
+  background: transparent !important;
+  border-bottom: 1px solid hsl(var(--border) / 0.6) !important;
+}
+.fc .fc-col-header-cell-cushion {
+  color: hsl(var(--muted-foreground)) !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.fc .fc-day-today .fc-col-header-cell-cushion {
+  color: hsl(var(--foreground)) !important;
+  font-weight: 700 !important;
+}
+
+/* ────── Today column ────── */
+.fc .fc-day-today {
+  background: hsl(var(--accent) / 0.35) !important;
+}
+
+/* ────── All-day area ────── */
+.fc .fc-daygrid-body {
+  background: hsl(var(--muted) / 0.3);
+}
+
+/* ────── Time labels ────── */
+.fc .fc-timegrid-slot-label-cushion {
+  font-size: 11px !important;
+  color: hsl(var(--muted-foreground) / 0.65) !important;
+  font-weight: 500 !important;
+  padding-right: 8px !important;
+}
+.fc .fc-timegrid-slot {
+  height: 48px !important;
+}
+.fc .fc-timegrid-slot-minor {
+  border-top-style: dashed !important;
+  border-color: hsl(var(--border) / 0.35) !important;
+}
+
+/* ────── Events ────── */
+.fc .fc-event {
+  border-width: 0 0 0 3px !important;
+  border-style: solid !important;
+  border-radius: 4px !important;
+  padding: 3px 7px !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  transition: filter 0.1s, opacity 0.1s;
+}
+.fc .fc-event:hover {
+  filter: brightness(0.95) !important;
+}
+.fc .fc-event-title {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-weight: 500 !important;
+}
+.fc .fc-event-time {
+  font-size: 11px !important;
+  opacity: 0.7;
+  font-weight: 600 !important;
+  margin-bottom: 1px;
+}
+
+/* all-day events — more pill-like */
+.fc .fc-daygrid-event {
+  border-radius: 5px !important;
+  padding: 2px 8px !important;
+  margin: 1px 2px !important;
+}
+
+/* ────── Now indicator ────── */
+.fc .fc-timegrid-now-indicator-line {
+  border-color: oklch(0.55 0.22 25) !important;
+  border-width: 2px !important;
+}
+.fc .fc-timegrid-now-indicator-arrow {
+  border-top-color: oklch(0.55 0.22 25) !important;
+  border-bottom-color: oklch(0.55 0.22 25) !important;
+}
+
+/* ────── Scrollbar ────── */
+.fc .fc-scroller::-webkit-scrollbar {
+  width: 3px;
+}
+.fc .fc-scroller::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 2px;
+}
+
+/* ────── Selection highlight ────── */
+.fc .fc-highlight {
+  background: hsl(var(--accent) / 0.7) !important;
+  border-radius: 4px !important;
+}
+
+/* ────── Month view day numbers ────── */
+.fc .fc-daygrid-day-number {
+  font-size: 12px !important;
+  color: hsl(var(--muted-foreground)) !important;
+  text-decoration: none !important;
+  padding: 5px 7px !important;
+}
+.fc .fc-day-today .fc-daygrid-day-number {
+  background: hsl(var(--foreground)) !important;
+  color: hsl(var(--background)) !important;
+  border-radius: 50% !important;
+  width: 26px !important;
+  height: 26px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 4px !important;
+  font-weight: 700 !important;
+}
+
+/* ────── "more" link ────── */
+.fc .fc-more-link {
+  font-size: 11px !important;
+  color: hsl(var(--muted-foreground)) !important;
+  padding: 0 4px !important;
+}
