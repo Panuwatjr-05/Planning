@@ -34,7 +34,7 @@ export default async function IdeaDetailPage({ params }: { params: Promise<{ id:
   }))
 
   return (
-    <div className="grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-8 items-start">
+    <div className="grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-8 items-start">
       <IdeaEditor idea={idea} />
       <div className="mt-14 bg-card rounded-2xl border border-border overflow-hidden">
         <div className="px-5 py-3.5 border-b border-border/60 flex items-center gap-2">
