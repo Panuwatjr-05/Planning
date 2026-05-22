@@ -23,7 +23,7 @@
   .fc .fc-toolbar {
     background: transparent !important;
     border: none !important;
-    border-bottom: 1.5px solid hsl(var(--border)) !important;
+    border-bottom: 2px solid hsl(var(--foreground)) !important;
     border-radius: 0 !important;
     padding: 0 0 12px 0 !important;
     margin-bottom: 12px !important;
