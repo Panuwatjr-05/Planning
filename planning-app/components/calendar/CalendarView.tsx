@@ -193,7 +193,7 @@ export function CalendarView({ tasks }: CalendarViewProps) {
             headerToolbar={isMobile ? {
               left: 'prev,next today',
               center: 'title',
-              right: 'timeGridWeek,timeGridDay',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay',
             } : {
               left: 'prev,next today',
               center: 'title',
