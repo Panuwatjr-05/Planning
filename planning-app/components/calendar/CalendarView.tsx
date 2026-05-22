@@ -124,9 +124,9 @@ export function CalendarView({ tasks }: CalendarViewProps) {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-4 md:h-[calc(100vh-120px)]">
+      <div className="flex flex-col-reverse md:flex-row gap-4 md:h-[calc(100vh-120px)]">
 
-        {/* Left sidebar — full width on mobile, fixed width on desktop */}
+        {/* Left sidebar — below calendar on mobile, fixed width on desktop */}
         <div className="flex flex-row flex-wrap gap-4 md:w-52 md:shrink-0 md:flex-col md:gap-5">
           <MiniCalendar
             selectedDate={selectedDate}
