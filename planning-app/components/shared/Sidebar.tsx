@@ -110,8 +110,11 @@ export function Sidebar() {
         </Sheet>
         <div className="flex items-center gap-2.5">
           <div className="w-7 h-7 rounded-xl shrink-0 flex items-center justify-center"
-            style={{ background: 'linear-gradient(145deg, oklch(0.48 0.2 255), oklch(0.22 0.08 275))' }}>
-            <span className="text-white text-xs font-black">P</span>
+            style={{ background: 'oklch(0.13 0.015 255)' }}>
+            <svg width="15" height="12" viewBox="0 0 22 18" fill="none">
+              <path d="M1 15 L6 8 L10 11 L15 4 L21 1" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="21" cy="1" r="1.5" fill="white"/>
+            </svg>
           </div>
           <h1 className="font-bold text-sm tracking-tight">Planning</h1>
         </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useMemo, useRef, useTransition } from 'react'
+import { useState, useCallback, useMemo, useRef, useTransition, useEffect } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -49,7 +49,21 @@ export function CalendarView({ tasks }: CalendarViewProps) {
   const [newTitle, setNewTitle] = useState('')
   const [newTag, setNewTag] = useState<'work' | 'life' | 'urgent'>('work')
   const [isCreating, startCreate] = useTransition()
+  const [isMobile, setIsMobile] = useState(false)
   const titleInputRef = useRef<HTMLInputElement>(null)
+  const calRef = useRef<FullCalendar>(null)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) calRef.current?.getApi().changeView('timeGridDay')
+    else calRef.current?.getApi().changeView('timeGridWeek')
+  }, [isMobile])
 
   const taskDates = useMemo(
     () => new Set(tasks.map((t) => t.date)),
@@ -114,10 +128,10 @@ export function CalendarView({ tasks }: CalendarViewProps) {
 
   return (
     <>
-      <div className="flex gap-4 h-[calc(100vh-120px)]">
+      <div className="flex gap-4 h-[calc(100vh-120px)] md:h-[calc(100vh-120px)]">
 
-        {/* Left sidebar */}
-        <div className="w-52 shrink-0 flex flex-col gap-5">
+        {/* Left sidebar — hidden on mobile */}
+        <div className="hidden md:flex w-52 shrink-0 flex-col gap-5">
           <MiniCalendar
             selectedDate={selectedDate}
             onSelectDate={handleMiniCalendarSelect}
@@ -170,16 +184,21 @@ export function CalendarView({ tasks }: CalendarViewProps) {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="w-px bg-border shrink-0" />
+        {/* Divider — hidden on mobile */}
+        <div className="hidden md:block w-px bg-border shrink-0" />
 
         {/* Main calendar */}
         <div className="flex-1 min-w-0 relative">
           <FullCalendar
+            ref={calRef}
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
             initialView="timeGridWeek"
             initialDate={selectedDate}
-            headerToolbar={{
+            headerToolbar={isMobile ? {
+              left: 'prev,next',
+              center: 'title',
+              right: 'today',
+            } : {
               left: 'prev,next today',
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay',
