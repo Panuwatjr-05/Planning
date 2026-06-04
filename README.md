@@ -102,11 +102,10 @@ planning-app/
         ├── 20260521000006_subtasks.sql
         ├── 20260521000007_idea_tasks.sql
         └── 20260522000000_project_pinned.sql
-
+```
 
 ## Features
-
-### ผู้ใช้ (User)
+ผู้ใช้ (User)
 
 - เพิ่ม แก้ไข ลบ task ประจำวัน พร้อม tag และกำหนดเวลาเริ่ม-สิ้นสุด
 - เพิ่ม แก้ไข ลบ project พร้อมรูปภาพ, คำอธิบาย, deadline และ subtasks
