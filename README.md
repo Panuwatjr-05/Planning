@@ -104,5 +104,14 @@ planning-app/
         └── 20260522000000_project_pinned.sql
 
 
+## Features
+
+### ผู้ใช้ (User)
+- เพิ่ม แก้ไข ลบ task ประจำวัน พร้อม tag และกำหนดเวลาเริ่ม-สิ้นสุด
+- เพิ่ม แก้ไข ลบ project พร้อมรูปภาพ, คำอธิบาย, deadline และ subtasks
+- จัดการ task ในโปรเจคด้วย Kanban board (drag & drop)
+- ตั้งเป้าหมายระยะสั้น/ยาว อัปเดต progress % พร้อม confetti เมื่อสำเร็จ 100%
+- บันทึกไอเดีย เพิ่ม tag, pin, ค้นหา และแปลงไอเดียเป็น task ได้โดยตรง
+- ดู task ทั้งหมดบนปฏิทิน Day / Week / Month view
 
 Built with Next.js 16 + Supabase + TanStack Query
